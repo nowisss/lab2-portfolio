@@ -1,0 +1,68 @@
+:host { display: block; min-width: 0; }
+
+.card {
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid #e6e9f1;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 6px 20px #18264a08;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px #18264a12;
+}
+
+.card__image {
+  display: block;
+  width: 100%;
+  height: 172px;
+  object-fit: cover;
+  background: #e9ebff;
+}
+
+.card__body { padding: 19px; }
+
+.card__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #98a0b1;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.category {
+  padding: 6px 8px;
+  border-radius: 7px;
+  background: #f0f1ff;
+  color: #5963d3;
+}
+
+h3 {
+  margin: 15px 0 8px;
+  font-size: 19px;
+  letter-spacing: -0.4px;
+}
+
+p {
+  min-height: 64px;
+  margin: 0 0 18px;
+  color: #6f788b;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #4f5bd5;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.card__link:hover { text-decoration: underline; }
