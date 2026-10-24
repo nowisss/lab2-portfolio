@@ -1,0 +1,3 @@
+import Link from 'next/link';
+export default function Projects({projects}){return <main className="wrap"><header><a className="logo" href="/">devfolio.</a><nav><Link href="/">Главная</Link><Link href="/live">SSR</Link></nav></header><section className="hero"><p className="eyebrow">STATIC SITE GENERATION</p><h1>Проекты, созданные при сборке</h1><div className="cards">{projects.map(p=><article className="card" key={p.id}><h2>{p.title}</h2><p>{p.desc}</p></article>)}</div></section></main>}
+export async function getStaticProps(){return {props:{projects:[{id:1,title:'FinFlow',desc:'Финансовый дашборд'},{id:2,title:'MonoStore',desc:'Каталог цифровых товаров'},{id:3,title:'Northline',desc:'Корпоративный сайт'}]}}}

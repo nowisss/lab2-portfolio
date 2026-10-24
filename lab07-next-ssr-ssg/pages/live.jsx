@@ -1,0 +1,3 @@
+import Link from 'next/link';
+export default function Live({requestTime}){return <main className="wrap"><header><a className="logo" href="/">devfolio.</a><nav><Link href="/">Главная</Link><Link href="/projects">SSG</Link></nav></header><section className="hero"><p className="eyebrow">SERVER-SIDE RENDERING</p><h1>Страница, созданная на сервере</h1><p>Время формирования данных для текущего запроса:</p><div className="card"><strong>{requestTime}</strong><p>Обнови страницу — значение изменится при новом запросе.</p></div></section></main>}
+export async function getServerSideProps(){return {props:{requestTime:new Date().toISOString()}}}
