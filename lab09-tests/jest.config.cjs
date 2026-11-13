@@ -1,0 +1,1 @@
+module.exports={testEnvironment:'jsdom',transform:{'^.+\\.[jt]sx?$':'babel-jest'},moduleNameMapper:{'\\.(css|less)$':'<rootDir>/test/styleMock.cjs'},setupFilesAfterEnv:['<rootDir>/test/setup.js'],testMatch:['**/?(*.)+(spec|test).[jt]s?(x)']};
