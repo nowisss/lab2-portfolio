@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import mongoose from 'mongoose';
+import Project from '../models/Project.js';
+const router=Router();
+router.get('/',async(req,res)=>{try{res.json(await Project.find().sort({createdAt:-1}));}catch(e){res.status(500).json({error:'Не удалось получить проекты'});}});
+router.get('/:id',async(req,res)=>{if(!mongoose.isValidObjectId(req.params.id))return res.status(400).json({error:'Некорректный ID'});try{const item=await Project.findById(req.params.id);if(!item)return res.status(404).json({error:'Проект не найден'});res.json(item);}catch(e){res.status(500).json({error:'Ошибка сервера'});}});
+router.post('/',async(req,res)=>{try{const item=await Project.create({title:req.body.title,description:req.body.description,imageUrl:req.body.imageUrl,category:req.body.category});res.status(201).json(item);}catch(e){res.status(400).json({error:'Проверьте обязательные поля',details:e.message});}});
+router.put('/:id',async(req,res)=>{if(!mongoose.isValidObjectId(req.params.id))return res.status(400).json({error:'Некорректный ID'});try{const item=await Project.findByIdAndUpdate(req.params.id,{title:req.body.title,description:req.body.description,imageUrl:req.body.imageUrl,category:req.body.category},{new:true,runValidators:true});if(!item)return res.status(404).json({error:'Проект не найден'});res.json(item);}catch(e){res.status(400).json({error:'Не удалось обновить проект',details:e.message});}});
+router.delete('/:id',async(req,res)=>{if(!mongoose.isValidObjectId(req.params.id))return res.status(400).json({error:'Некорректный ID'});try{const item=await Project.findByIdAndDelete(req.params.id);if(!item)return res.status(404).json({error:'Проект не найден'});res.json({message:'Проект удалён',id:item._id});}catch(e){res.status(500).json({error:'Ошибка сервера'});}});
+export default router;
