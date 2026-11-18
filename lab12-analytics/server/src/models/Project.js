@@ -1,0 +1,1 @@
+import mongoose from'mongoose';const schema=new mongoose.Schema({title:{type:String,required:true},category:{type:String,required:true},budget:{type:Number,required:true,min:0},status:{type:String,enum:['completed','in-progress','planned'],default:'planned'}},{timestamps:true});export default mongoose.model('Project',schema);
